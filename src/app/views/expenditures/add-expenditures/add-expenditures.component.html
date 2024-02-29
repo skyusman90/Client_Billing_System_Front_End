@@ -1,0 +1,54 @@
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+    <c-container>
+      <c-row class="justify-content-center">
+        <c-col lg="7" md="9" xl="6">
+          <c-card class="mx-4">
+            <c-card-body class="p-4">
+              <form cForm (ngSubmit)="addExpenditure()">
+                <h1>Insert Expenditure</h1>
+                <p class="text-medium-emphasis">Add Expenditure</p>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    Title
+                  </span>
+                  <input autoComplete="Title" cFormControl placeholder="Title" [(ngModel)]="newExpenditure.expenditure_title" [ngModelOptions]="{standalone: true}"/>
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>Details</span>
+                  <input autoComplete="Details" cFormControl [(ngModel)]="newExpenditure.expenditure_details" placeholder="Details" [ngModelOptions]="{standalone: true}"/>
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    Type
+                  </span>
+                  <input autoComplete="Type" cFormControl placeholder="Type" [(ngModel)]="newExpenditure.expenditure_type" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    Amount
+                  </span>
+                  <input autoComplete="Amount" cFormControl placeholder="Amount" [(ngModel)]="newExpenditure.expenditure_amount" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    Date
+                  </span>
+                  <input autoComplete="Date" cFormControl placeholder="Date" type="date" [(ngModel)]="newExpenditure.expenditure_date" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                    <span cInputGroupText>
+                      Status
+                    </span>
+                    <input autoComplete="Status" cFormControl placeholder="Status" [(ngModel)]="newExpenditure.expenditure_status" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <div class="d-grid">
+                  <button cButton color="success" type="submit">Add Expenditure</button>
+                </div>
+              </form>
+            </c-card-body>
+          </c-card>
+        </c-col>
+      </c-row>
+    </c-container>
+  </div>
+  

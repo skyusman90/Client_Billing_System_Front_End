@@ -1,0 +1,86 @@
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+    <c-container>
+      <c-row class="justify-content-center">
+        <c-col lg="7" md="9" xl="6">
+          <c-card class="mx-4">
+            <c-card-body class="p-4">
+              <form cForm (ngSubmit)="RegisterCustomer()">
+                <h1>Insert Customer</h1>
+                <p class="text-medium-emphasis">Add Customer</p>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    External ID
+                  </span>
+                  <input autoComplete="id_external" cFormControl placeholder="External ID" [(ngModel)]="newCustomer.customer_id_external" [ngModelOptions]="{standalone: true}"/>
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>Name</span>
+                  <input autoComplete="name" cFormControl [(ngModel)]="newCustomer.customer_name" placeholder="Name" [ngModelOptions]="{standalone: true}"/>
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    Username
+                  </span>
+                  <input autoComplete="Username" cFormControl placeholder="Username" type="text" [(ngModel)]="newCustomer.customer_user_name" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    CNIC
+                  </span>
+                  <input autoComplete="CNIC" cFormControl placeholder="CNIC" [(ngModel)]="newCustomer.customer_cnic" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    Mobile#
+                  </span>
+                  <input autoComplete="MobileNum" cFormControl placeholder="MobileNum" [(ngModel)]="newCustomer.cusotmer_mobilenum" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                    <span cInputGroupText>
+                      Address
+                    </span>
+                    <input autoComplete="Address" cFormControl placeholder="Address" [(ngModel)]="newCustomer.customer_address" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                    <!--<span cInputGroupText>
+                      Package ID
+                    </span>-->
+                    <!--<span class="input-group mb-3">-->
+                      <label class="input-group-text" for="inputGroupSelect01">Package ID</label>
+                      <select #packageIds class="form-select" id="inputGroupSelect01" (change)="OnSelected(packageIds.value)">
+                        <option selected>{{newCustomer.package_id}}</option>
+                        <option *ngFor="let pac of allPackages">{{pac.package_name}}</option>
+                      </select>
+                    <!--</span>-->
+                    <!--<input autoComplete="Package ID" cFormControl placeholder="Package ID" [(ngModel)]="newCustomer.package_id" [ngModelOptions]="{standalone: true}" />-->
+                </c-input-group>
+                <c-input-group class="mb-3">
+                    <span cInputGroupText>
+                      Due Day
+                    </span>
+                    <input autoComplete="Due Day" cFormControl placeholder="Due Day" [(ngModel)]="newCustomer.customer_due_day" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                    <span cInputGroupText>
+                      Join Date
+                    </span>
+                    <input autoComplete="Join Date" cFormControl placeholder="Join Date" type="date" [(ngModel)]="newCustomer.join_date" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                    <span cInputGroupText>
+                      Status
+                    </span>
+                    <input autoComplete="Status" cFormControl placeholder="Status" [(ngModel)]="newCustomer.customer_status" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <div class="d-grid">
+                  <button cButton color="success" type="submit">Add Customer</button>
+                </div>
+              </form>
+            </c-card-body>
+          </c-card>
+        </c-col>
+      </c-row>
+    </c-container>
+  </div>
+  
+

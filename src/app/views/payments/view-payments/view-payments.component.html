@@ -1,0 +1,76 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Payments</strong>
+        </c-card-header>
+        <c-card-body>
+            <p class="text-medium-emphasis small">
+                <button cButton color="primary" [routerLink]="['/addPayment']">Add</button>
+            </p>
+            <p class="select-buttons">
+                <c-form-check [switch]="true">
+                    <input cFormCheckInput type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll()" />
+                    <label cFormCheckLabel>Select All</label>
+                </c-form-check>
+            </p>
+            <table class="table table-striped">
+            <thead ng-reflect-color="light">
+                <tr>
+                    <th scope="col">Sr#</th>
+                    <th></th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Package Name</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Sms Sent</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr *ngFor="let pa of allPayments | paginate: {
+                    itemsPerPage: tableSize,
+                    currentPage: page,
+                    totalItems: count
+                }; let indexOfPayments = index" scope="row">
+                    <th scope="row">{{indexOfPayments+1}}</th>
+                    <td>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="pa.selected" (change)="toggleCheckBox()">
+                    </td>
+                    <td>{{pa.customer_name}}</td>
+                    <td>{{pa.package_name}}</td>
+                    <td>{{pa.payment_title}}</td>
+                    <td>{{pa.payment_due_date}}</td>
+                    <td>{{pa.payment_amount}}</td>
+                    <td *ngIf="pa.sms_sent == 'Y'; else elseBlock">
+                        <span style="color: green;">Yes </span>
+                    </td>
+                    <ng-template #elseBlock>
+                        <td style="color: red;">No </td>
+                    </ng-template>
+                    <td><button cButton color="primary" variant="outline" [routerLink]="['/updatePayment']" (click)="editPayment(pa)">Edit</button></td>
+                    <td *ngIf="pa.payment_status == 'Y'; else elseBlock2">
+                        <button cButton color="success" (click)="updatePaymentStatus(pa, true, '')">Status</button>
+                    </td>
+                    <ng-template #elseBlock2>
+                        <td><button cButton color="danger" (click)="updatePaymentStatus(pa, true, '')">Status</button></td>
+                    </ng-template>
+                </tr>
+            </tbody>
+            </table>
+        </c-card-body>
+        <pagination-controls
+            previousLabel="Prev"
+            nextLabel="Next"
+            (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </c-card>
+    </c-col>
+    <c-col>
+        <button cButton color="success" (click)="markActive()">Mark As Active</button>
+        <button cButton color="danger" (click)="markInActive()">Mark As Inactive</button>
+    </c-col>
+</c-row>

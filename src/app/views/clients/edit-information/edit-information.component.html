@@ -1,0 +1,42 @@
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+    <c-container>
+      <c-row class="justify-content-center">
+        <c-col lg="7" md="9" xl="6">
+          <c-card class="mx-4">
+            <c-card-body class="p-4">
+              <form cForm (ngSubmit)="updateClient()">
+                <h1>Update</h1>
+                <p class="text-medium-emphasis">Edit your account</p>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilUser"></svg>
+                  </span>
+                  <input autoComplete="name" cFormControl placeholder="Name" [(ngModel)]="client.client_name" [ngModelOptions]="{standalone: true}"/>
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>&#64;</span>
+                  <input autoComplete="username" cFormControl [(ngModel)]="client.client_username" placeholder="Username" [ngModelOptions]="{standalone: true}"/>
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilLockLocked"></svg>
+                  </span>
+                  <input autoComplete="Password" cFormControl placeholder="Password" type="password" [(ngModel)]="client.client_password" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-4">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilListNumbered"></svg>
+                  </span>
+                  <input autoComplete="MobileNumber" cFormControl placeholder="MobileNumber" [(ngModel)]="client.client_mobilenum" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <div class="d-grid">
+                  <button cButton color="success" type="submit">Save Changes</button>
+                </div>
+              </form>
+            </c-card-body>
+          </c-card>
+        </c-col>
+      </c-row>
+    </c-container>
+  </div>
+  

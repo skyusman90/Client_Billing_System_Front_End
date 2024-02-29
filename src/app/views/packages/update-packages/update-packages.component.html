@@ -1,0 +1,34 @@
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+    <c-container>
+      <c-row class="justify-content-center">
+        <c-col lg="7" md="9" xl="6">
+          <c-card class="mx-4">
+            <c-card-body class="p-4">
+              <form cForm (ngSubmit)="updatePackage()">
+                <h1>Update Package</h1>
+                <p class="text-medium-emphasis">Edit Package Information</p>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    Name
+                  </span>
+                  <input autoComplete="name" cFormControl placeholder="Name" [(ngModel)]="newPackage.package_name" [ngModelOptions]="{standalone: true}"/>
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>Price</span>
+                  <input autoComplete="Price" cFormControl [(ngModel)]="newPackage.package_price" placeholder="Price" [ngModelOptions]="{standalone: true}"/>
+                </c-input-group>
+                <c-input-group class="mb-3">
+                    <span cInputGroupText>Status</span>
+                    <input autoComplete="Status" cFormControl [(ngModel)]="newPackage.package_status" placeholder="Status" [ngModelOptions]="{standalone: true}"/>
+                </c-input-group>
+                <div class="d-grid">
+                  <button cButton color="success" type="submit">Save Changes</button>
+                </div>
+              </form>
+            </c-card-body>
+          </c-card>
+        </c-col>
+      </c-row>
+    </c-container>
+  </div>
+  

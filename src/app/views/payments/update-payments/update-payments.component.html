@@ -1,0 +1,82 @@
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+    <c-container>
+      <c-row class="justify-content-center">
+        <c-col lg="7" md="9" xl="6">
+          <c-card class="mx-4">
+            <c-card-body class="p-4">
+              <form cForm (ngSubmit)="updatePayment()">
+                <h1>Update Payment</h1>
+                <p class="text-medium-emphasis">Edit Payment Information</p>
+                <c-input-group class="mb-3">
+                  <!--<span cInputGroupText>
+                    Customer ID
+                  </span>-->
+                  <label class="input-group-text" for="inputGroupSelect01">Customer Name</label>
+                  <select #customerNames class="form-select" id="inputGroupSelect01" (change)="OnSelectedCustomerName(customerNames.value)">
+                    <option selected>{{newPayment.customer_name}}</option>
+                    <option *ngFor="let cu of allCustomers">{{cu.customer_name}}</option>
+                  </select>
+                  <!--<input autoComplete="Customer ID" cFormControl placeholder="Customer ID" [(ngModel)]="newPayment.customer_id" [ngModelOptions]="{standalone: true}"/>-->
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <!--<span cInputGroupText>Package ID</span>-->
+                  <label class="input-group-text" for="inputGroupSelect01">Package ID</label>
+                  <select #packageIds class="form-select" id="inputGroupSelect01" (change)="OnSelected(packageIds.value)">
+                    <option selected>{{newPayment.package_name}}</option>
+                    <option *ngFor="let pac of allPackages">{{pac.package_name}}</option>
+                  </select>
+                  <!--<input autoComplete="Package ID" cFormControl [(ngModel)]="newPayment.package_id" placeholder="Package ID" [ngModelOptions]="{standalone: true}"/>-->
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    Title
+                  </span>
+                  <input autoComplete="Title" cFormControl placeholder="Title" [(ngModel)]="newPayment.payment_title" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    Due Date
+                  </span>
+                  <input autoComplete="Due Date" cFormControl placeholder="Due Date" type="date" [(ngModel)]="newPayment.payment_due_date" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    Amount
+                  </span>
+                  <input autoComplete="Amount" cFormControl placeholder="Amount" [(ngModel)]="newPayment.payment_amount" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                    <span cInputGroupText>
+                      Status
+                    </span>
+                    <input autoComplete="Status" cFormControl placeholder="Status" [(ngModel)]="newPayment.payment_status" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                    <span cInputGroupText>
+                      Recieved By
+                    </span>
+                    <input autoComplete="Recieved By" cFormControl placeholder="Recieved By" [(ngModel)]="newPayment.received_by" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                    <span cInputGroupText>
+                      Generation Date
+                    </span>
+                    <input autoComplete="Generation Date" cFormControl placeholder="Generation Date" type="date" [(ngModel)]="newPayment.generation_date" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                    <span cInputGroupText>
+                      Sms Sent
+                    </span>
+                    <input autoComplete="Sms Sent" cFormControl placeholder="Sms Sent" [(ngModel)]="newPayment.sms_sent" [ngModelOptions]="{standalone: true}" />
+                </c-input-group>
+                <div class="d-grid">
+                  <button cButton color="success" type="submit">Save Changes</button>
+                </div>
+              </form>
+            </c-card-body>
+          </c-card>
+        </c-col>
+      </c-row>
+    </c-container>
+  </div>
+  

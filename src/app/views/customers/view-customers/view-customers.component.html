@@ -1,0 +1,69 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Customers</strong>
+        </c-card-header>
+        <c-card-body>
+            <p class="text-medium-emphasis small">
+                <button cButton color="primary" [routerLink]="['/addCustomer']">Add</button>
+            </p>
+            <p class="select-buttons">
+                <c-form-check [switch]="true">
+                    <input cFormCheckInput type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll()" />
+                    <label cFormCheckLabel>Select All</label>
+                </c-form-check>
+            </p>
+            <table class="table table-striped">
+            <thead ng-reflect-color="light">
+                <tr>
+                    <th scope="col">Sr#</th>
+                    <th></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">CNIC</th>
+                    <th scope="col">Package Name</th>
+                    <th scope="col">Join Date</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr *ngFor="let cu of allCustomers | paginate: {
+                    itemsPerPage: tableSize,
+                    currentPage: page,
+                    totalItems: count
+                }; let indexOfCustomers = index" scope="row">
+                    <th scope="row">{{indexOfCustomers+1}}</th>
+                    <td>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="cu.selected" (change)="toggleCheckBox()">
+                    </td>
+                    <td>{{cu.customer_name}}</td>
+                    <td>{{cu.customer_user_name}}</td>
+                    <td>{{cu.customer_cnic}}</td>
+                    <td>{{cu.package_name}}</td>
+                    <td>{{cu.join_date}}</td>
+                    <td><button cButton color="primary" variant="outline" [routerLink]="['/updateCustomer']" (click)="editCustomer(cu)">Edit</button></td>
+                    <td *ngIf="cu.customer_status == 'Y'; else elseBlock2">
+                        <button cButton color="success" (click)="updateCustomerStatus(cu, true, '')">Status</button>
+                    </td>
+                    <ng-template #elseBlock2>
+                        <td><button cButton color="danger" (click)="updateCustomerStatus(cu, true, '')">Status</button></td>
+                    </ng-template>
+                </tr>
+            </tbody>
+            </table>
+        </c-card-body>
+        <pagination-controls
+                previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="onTableDataChange($event)"
+            >
+        </pagination-controls>
+      </c-card>
+    </c-col>
+    <c-col>
+        <button cButton color="success" (click)="markActive()">Mark As Active</button>
+        <button cButton color="danger" (click)="markInActive()">Mark As Inactive</button>
+    </c-col>
+</c-row>
