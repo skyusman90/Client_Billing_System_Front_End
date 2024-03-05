@@ -20,6 +20,7 @@ import { AddPaymentsComponent } from './views/payments/add-payments/add-payments
 import { UpdatePaymentsComponent } from './views/payments/update-payments/update-payments.component';
 import { AddExpendituresComponent } from './views/expenditures/add-expenditures/add-expenditures.component';
 import { UpdateExpendituresComponent } from './views/expenditures/update-expenditures/update-expenditures.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: DefaultLayoutComponent,
+    component: DashboardComponent,
     data: {
       title: 'Home'
     },
